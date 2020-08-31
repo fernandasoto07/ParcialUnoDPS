@@ -3,31 +3,34 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-5">
+
       <li class="nav-item active px-3">
         <a class="nav-link" href="./">Inicio</a>
       </li>
+      
       <li class="nav-item dropdown px-3">
         <a class="nav-link dropdown-toggle" href="#" id="clienteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
         <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appCliente">Nuevo Cliente</button>
-          <a class="dropdown-item" href="#">Ver Clientes</a>
+          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appListaCli" (click)='viewClient()'>Ver Clientes</button>
         </div>
       </li>
+      
       <li class="nav-item dropdown px-3">
         <a class="nav-link dropdown-toggle" href="#" id="vehiculoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vehiculos</a>
         <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
           <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appCarro">Nuevo Vehiculo</button>
-          <a class="dropdown-item" href="#">Ver Vehiculos</a>
+          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appListaVehi" (click)='viewVehiculos()'>Ver Vehiculos</button>
         </div>
       </li>
+      
       <li class="nav-item dropdown px-3">
         <a class="nav-link dropdown-toggle" href="#" id="visitasDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visitas</a>
         <div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appCarro">Nuevo Visita</button>
-          <a class="dropdown-item" href="#">Histiorial Visitas</a>
+          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appVisitas">Nuevo Visita</button>
+          <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#appListaVis" (click)='viewVisitas()'>Historial Visitas</button>
         </div>
       </li>
     </ul>
@@ -41,7 +44,7 @@
           <img src="../assets/banner1.jpg" class="d-block w-100" alt="banner1">
           <div class="carousel-caption d-none d-md-block" style="background-color:rgba(0,0,0,0.4)">
             <h2>Cambio de Aceite</h2>
-            <p>Costo de Servicio USD$ 35.72</p>
+            <p>Costo de Servicio USD$ 35.75</p>
           </div>
         </div>
         <div class="carousel-item">
@@ -61,7 +64,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <app-cliente></app-cliente>
+        <app-cliente [inStateCli]='stateData' (outStateCli)='updateState($event)'></app-cliente>
       </div>
     </div>
   </div>
@@ -72,7 +75,65 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <app-carro [dataCarro]='message' (newData)='write($event)'></app-carro>
+        <app-carro [inStateCar]='stateData' (outStateCar)='updateState($event)'></app-carro>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal para ingreso de visitas -->
+<div class="modal fade" id="appVisitas" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-visitas  [inStateVis]='stateData' (outStateVis)='updateState($event)'></app-visitas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal de exito-->
+<div class="modal fade" id="exito" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¡Ingresado con Exito!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal vista cliente-->
+<div class="modal fade" id="appListaCli" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-lista  [ClienteLista]='tableData.clientes'></app-lista>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal vista vehiculos-->
+<div class="modal fade" id="appListaVehi" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-carros  [carroLista]='tableData.vehiculo'></app-carros>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal vista visitas-->
+<div class="modal fade" id="appListaVis" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-meets  [visitaLista]='tableData.visitas'></app-meets>
       </div>
     </div>
   </div>

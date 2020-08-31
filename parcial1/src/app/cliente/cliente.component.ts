@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../cliente'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cliente',
@@ -8,15 +7,30 @@ import { Cliente } from '../cliente'
 })
 export class ClienteComponent implements OnInit {
 
-  cliente= new Cliente(1,'',18928347-8,'',10.50);
-  enviar = false;
+  @Input() inStateCli : any
+  @Output() outStateCli = new EventEmitter<any>()
+
+  nombre : string = 'Gerardo '
+  dui : string = '12345678-9'
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.inStateCli)
   }
 
   onSubmit(){
-    this.enviar=true;
+    this.inStateCli = {
+      nombre : this.nombre,
+      dui :this.dui
+    }
+    console.log(this.inStateCli)
+    this.outStateCli.emit( this.inStateCli )
+  }
+
+  onClose(){
+    this.nombre = ''
+    this.dui = ''
   }
 
 }

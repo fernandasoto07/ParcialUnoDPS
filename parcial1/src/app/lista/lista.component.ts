@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {BrowserModule}from '@angular/platform-browser'
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
  selector: 'app-lista',
@@ -8,12 +6,7 @@ import {BrowserModule}from '@angular/platform-browser'
  styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
-  ClienteLista=[];
-  id:number;
-  nombre:string;
-  dui:number;
-  vehiculo:string;
-  costo:number;
+  @Input() ClienteLista : any;
 
   constructor() { }
 

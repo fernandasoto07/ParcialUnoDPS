@@ -1,0 +1,34 @@
+<div>
+	<div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Ingreso de Nueva Visita</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<form #visitaform='ngForm'>
+		<div class="form-group">
+			<label for="nombre">Nombre o DUI:</label>
+			<input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" #name="ngModel" pattern="(([a-zA-Z]+\s?){1,4}|\d{8}-\d)">
+			<div [hidden]="name.valid || name.pristine">Nombre o DUI es requerido</div>
+		</div>
+		<div class="form-group">
+			<label for="placa">Placa del Vehiculo:</label>
+			<input type="text" class="form-control" id="placa" required [(ngModel)]="placa" name="placa" #placa1="ngModel" pattern ='(\d{6}|\d{3}-\d{3})'>
+			<div [hidden]="placa1.valid || placa1.pristine">Placa es requerido</div>
+		</div>
+		<div class="form-group">
+				<label for="motivo">Motivo de Visita:</label>
+				<input type="text" class="form-control" id="motivo" required [(ngModel)]="motivo" name="motivo" #car="ngModel">
+				<div [hidden]="car.valid || car.pristine">Motivo de Visita es requerido</div>
+		</div>
+		<div class="form-group">
+			<label for="costo">Costo reparación:</label>
+			<input type="text" class="form-control" id="costo" required [(ngModel)]="costo" name="costo" #price="ngModel" pattern="^\d+(.\d+)?$">
+			<div [hidden]="price.valid || price.pristine">Costo es requerido</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-success" [disabled]="!visitaform.form.valid">Crear</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="text-center">Lista de Vehiculos</h1>
+	</div>
+	<table class="table table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Placa</th>
+				<th scope="col">Detalles</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cli of carroLista">
+				<td>{{cli.placa}}</td>
+				<td>{{cli.marca}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

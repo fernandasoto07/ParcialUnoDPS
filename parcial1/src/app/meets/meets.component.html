@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="text-center">Historial de visitas</h1>
+	</div>
+	<table class="table table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">DUI</th>
+				<th scope="col">Placa</th>
+				<th scope="col">Motivo</th>
+				<th scope="col">Costo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cli of visitaLista">
+				<td>{{cli.dui_cliente}}</td>
+				<td>{{cli.placa_vehiculo}}</td>
+				<td>{{cli.motivo}}</td>  
+				<td>{{cli.costo}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

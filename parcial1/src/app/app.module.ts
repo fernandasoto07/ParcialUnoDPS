@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { FormsModule } from '@angular/forms';
-//import { HttpClient } from '@angular/common/http'
 
 import {FormsModule} from '@angular/forms';
 import { ListaComponent } from './lista/lista.component'
 import { ClienteComponent } from './cliente/cliente.component';
-import { CarroComponent } from './carro/carro.component'
+import { CarroComponent } from './carro/carro.component';
+import { VisitasComponent } from './visitas/visitas.component';
+import { CarrosComponent } from './carros/carros.component';
+import { MeetsComponent } from './meets/meets.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import { CarroComponent } from './carro/carro.component'
     SignUpComponent,
     ListaComponent,
     ClienteComponent,
-    CarroComponent
+    CarroComponent,
+    VisitasComponent,
+    CarrosComponent,
+    MeetsComponent
   ],
   imports: [
     BrowserModule,
