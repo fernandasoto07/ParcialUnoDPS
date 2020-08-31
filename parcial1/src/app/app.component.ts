@@ -9,34 +9,34 @@ import { Conn } from './conn'
 export class AppComponent implements OnInit {
   stateData : any = null
   tableData = {
-    clientes : {},
-    vehiculo : {},
-    visitas : {}
+    clientes : [],
+    vehiculo : [],
+    visitas : []
   }
   conn = new Conn();
 
   ngOnInit(){
     this.viewClient()
-    this.viewVehiculos()
-    this.viewVisitas()
+    // this.viewVehiculos()
+    // this.viewVisitas()
   }
   
   updateState(newState : any){ this.stateData = newState }
 
   viewClient(){
-    let  query = 'Select * from tallercliente;'
+    let  query = 'Select * from `tallerCliente`;'
     this.conn.myQuery(true,query)
     this.tableData.clientes = this.conn.info.data
   }
 
   viewVehiculos(){
-    let  query = 'Select * from tallervehiculo;'
+    let  query = 'Select * from `tallerVehiculo`;'
     this.conn.myQuery(true,query)
     this.tableData.vehiculo = this.conn.info.data
   }
 
   viewVisitas(){
-    let  query = 'Select * from tallervisitas;'
+    let  query = 'Select * from `tallerVisitas`;'
     this.conn.myQuery(true,query)
     this.tableData.visitas = this.conn.info.data
   }

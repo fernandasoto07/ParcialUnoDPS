@@ -8,8 +8,8 @@ import { Conn } from '../conn'
 })
 export class CarroComponent implements OnInit {
 
-  nombre : string = 'nissan'
-  placa : string = '987654'
+  nombre : string = ''
+  placa : string = ''
 
   @Input() inStateCar : any
   @Output() outStateCar = new EventEmitter<any>()
@@ -22,13 +22,12 @@ export class CarroComponent implements OnInit {
     let conn = new Conn()
     let query : string
 
-    if(this.inStateCar == null) query = `insert into tallerVehiculo values ('${this.placa}', '${this.nombre}');`
+    if(this.inStateCar == null) query = `insert into \`tallerVehiculo\` (\`placa\`, \`marca\`) values ('${this.placa}', '${this.nombre}');`
     else query = 
-      `insert into tallerCliente values ('${this.inStateCar.dui}', '${this.inStateCar.nombre}', 0);
-      insert into tallerVehiculo values ('${this.placa}', '${this.nombre}');`; 
+      `insert into \`tallerCliente\` (\`dui\`, \`nombre\`, \`total_visitas\`) values ('${this.inStateCar.dui}', '${this.inStateCar.nombre}', 0);
+      insert into \`tallerVehiculo\` (\`placa\`, \`marca\`) values ('${this.placa}', '${this.nombre}');`; 
 
     this.inStateCar = null
-    console.log(query)
     conn.myQuery(false, query)
     this.outStateCar.emit( this.inStateCar )
   }

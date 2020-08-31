@@ -10,14 +10,12 @@ export class ClienteComponent implements OnInit {
   @Input() inStateCli : any
   @Output() outStateCli = new EventEmitter<any>()
 
-  nombre : string = 'Gerardo '
-  dui : string = '12345678-9'
+  nombre : string = ''
+  dui : string = ''
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.inStateCli)
-  }
+  ngOnInit(): void { }
 
   onSubmit(){
     this.inStateCli = {

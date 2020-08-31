@@ -4,8 +4,8 @@ export class Conn {
   body = new FormData()
 
   constructor(
-    user : string = 'root', 
-    pswd : string = '' ,
+    user : string = 'id14021897_jlopzz', 
+    pswd : string = '123QWE456rty!' ,
     host : string = 'localhost', 
     db : string = "id14021897_dps"
   ){
@@ -20,13 +20,16 @@ export class Conn {
     this.body.append('query',query)
     this.body.append('select',select.toString())
 
-    fetch('http://localhost/test/',{
+    console.log(query)
+
+    fetch('https://jlopzzweb.000webhostapp.com/',{
       method:'POST',
       body: this.body
     })
     .then( res => { return res.json() })
     .catch( error => console.error('Error:', error))
     .then( myJson => { 
+      console.log(myJson)
       this.info = myJson
     })
   } 
