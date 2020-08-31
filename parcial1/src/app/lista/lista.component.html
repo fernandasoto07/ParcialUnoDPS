@@ -1,28 +1,25 @@
 <div class="container">
-    <div class="jumbotron">
-    <h1>Lista de clientes</h1>
-    <p>{{ fecha | date:'fullDate'}}</p>
-    </div>
-    <table class="table table-sm">
-    <thead class="thead-dark">
-    <tr>
-    
-    <th scope="col">id</th>
-    <th scope="col">Nombre</th>
-    <th scope="col">DUI</th>
-    <th scope="col">Vehículo</th>
-    <th scope="col">Costo</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let cli of Lista">
-        <td>{{cli.id}}</td>
-        <td>{{cli.nombre}}</td>
-        <td>{{cli.DUI}}</td>
-        <td>{{cli.vehiculo}}</td>
-        <td>{{cli.costo}}</td>  
-        </tr>
-    </tbody>
-    </table>
-   </div>
-   
+	<div class="jumbotron">
+		<h1>Lista de clientes</h1>
+	</div>
+	<table class="table table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">id</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">DUI</th>
+				<th scope="col">Vehículo</th>
+				<th scope="col">Costo</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr *ngFor="let cli of ClienteLista">
+				<td>{{cli.id}}</td>
+				<td>{{cli.nombre}}</td>
+				<td>{{cli.DUI}}</td>
+				<td>{{cli.vehiculo}}</td>
+				<td>{{cli.costo}}</td>  
+			</tr>
+		</tbody>
+	</table>
+</div>

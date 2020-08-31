@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'parcial1';
+  message = 'cualquier cosa';
+  cont = 1
+  testPadre : any
+  
+  write(val : any){
+    this.testPadre = val
+    this.message = 'nuevo valor '+this.cont ++
+    this.print()
+  }
+
+  print(){console.log(this.testPadre)}
 }
